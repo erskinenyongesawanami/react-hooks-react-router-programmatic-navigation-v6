@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // 🆕 import
 
 function Login() {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
+
+  const navigate = useNavigate(); // 🆕 call the hook
 
   function handleChange(e) {
     setFormData({
@@ -15,11 +18,14 @@ function Login() {
 
   function handleLogin(e) {
     e.preventDefault();
+
+    // Fake login logic - just navigate for now
+    navigate("/"); // 🆕 programmatic navigation to Home
   }
 
   return (
     <form onSubmit={handleLogin}>
-      <label for="username">Username</label>
+      <label htmlFor="username">Username</label>
       <div>
         <input
           id="username"
@@ -29,7 +35,7 @@ function Login() {
           onChange={handleChange}
         />
       </div>
-      <label for="password">Password</label>
+      <label htmlFor="password">Password</label>
       <div>
         <input
           id="password"
@@ -45,3 +51,4 @@ function Login() {
 }
 
 export default Login;
+
